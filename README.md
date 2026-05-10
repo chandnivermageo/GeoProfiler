@@ -1,6 +1,8 @@
 # GeoProfiler
 
-### Automated Topographic Line / Swath Profile Extraction Tool
+<p align="center">
+  <img src="images/GeoProfiler_preview.png" width="1000">
+</p>
 
 GeoProfiler is an automated Python-based terrain profiling tool designed for efficient extraction, analysis, and visualization of topographic profiles from Digital Elevation Models (DEMs).
 
