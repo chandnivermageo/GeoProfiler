@@ -1,4 +1,3 @@
-# GeoProfiler
 
 <p align="center">
   <img src="images/GeoProfiler_preview.png" width="1000">
