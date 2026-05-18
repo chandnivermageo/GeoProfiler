@@ -37,10 +37,17 @@
 import rasterio
 import numpy as np
 import geopandas as gpd
+import matplotlib
 import matplotlib.pyplot as plt
 import os
 from scipy.ndimage import gaussian_filter1d
 from shapely.geometry import LineString, MultiLineString
+
+# ---------------------------------------------------
+# VECTOR / PUBLICATION SETTINGS
+# ---------------------------------------------------
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
 
 # ---------------------------------------------------
 # CREATE OUTPUT FOLDER
@@ -154,15 +161,15 @@ for idx, geom in enumerate(gdf.geometry):
 
         plt.savefig(
             f"outputs/topographic_line_profile_line_{idx+1}.pdf",
-            dpi=300,
-            bbox_inches="tight"
-            )
+            bbox_inches="tight",
+            transparent=True
+        )
 
         plt.savefig(
             f"outputs/topographic_line_profile_line_{idx+1}.png",
             dpi=300,
             bbox_inches="tight"
-            )
+        )
 
         plt.show()
         plt.close()
@@ -247,7 +254,7 @@ for idx, geom in enumerate(gdf.geometry):
         elev_max_smooth = gaussian_filter1d(elev_max, sigma=5)
 
         # PLOT
-        plt.figure(figsize=(12,3))
+        plt.figure(figsize=(8,3))
 
         plt.fill_between(dist_km, elev_min_smooth, elev_max_smooth,
                          color="lightgray", alpha=0.8, label="Swath min-max")
@@ -263,8 +270,8 @@ for idx, geom in enumerate(gdf.geometry):
 
         plt.savefig(
             f"outputs/topographic_swath_profile_line_{idx+1}.pdf",
-            dpi=300,
-            bbox_inches="tight"
+            bbox_inches="tight",
+            transparent=True
         )
 
         plt.savefig(
