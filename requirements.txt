@@ -1,6 +1,7 @@
 rasterio
 numpy
 geopandas
+pandas
 matplotlib
 scipy
 shapely
