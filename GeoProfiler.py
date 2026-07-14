@@ -171,13 +171,12 @@ for idx, geom in enumerate(gdf.geometry):
         # ------------------------------------------
 
         plt.figure(figsize=(8,3))
-        plt.plot(dist_km, smooth_elev, color="blue", linewidth=1.2,
+        plt.plot(dist_km, smooth_elev, color="black", linewidth=1.2,
                  label="River/Cross-section")
 
         plt.xlabel("Distance (km)")
         plt.ylabel("Elevation (m)")
         plt.title(f"Topographic Line Profile – Line {idx+1}")
-        plt.legend()
         plt.tight_layout()
 
         plt.savefig(
