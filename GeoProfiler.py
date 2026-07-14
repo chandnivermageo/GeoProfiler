@@ -31,7 +31,7 @@
 #    - swath_width is used only in swath mode
 
 # 5. Output:
-#    - Output plots are automatically saved in PNG and vector PDF formats
+#    - Output plots are automatically saved in PNG, CSV and vector PDF formats
 
 
 import rasterio
@@ -171,8 +171,7 @@ for idx, geom in enumerate(gdf.geometry):
         # ------------------------------------------
 
         plt.figure(figsize=(8,3))
-        plt.plot(dist_km, smooth_elev, color="black", linewidth=1.2,
-                 label="River/Cross-section")
+        plt.plot(dist_km, smooth_elev, color="black", linewidth=1.2)
 
         plt.xlabel("Distance (km)")
         plt.ylabel("Elevation (m)")
