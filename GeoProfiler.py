@@ -37,6 +37,7 @@
 import rasterio
 import numpy as np
 import geopandas as gpd
+import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 import os
@@ -149,6 +150,26 @@ for idx, geom in enumerate(gdf.geometry):
     # ===================================================
     if profile_type == "line":
 
+        # ------------------------------------------
+        # EXPORT LINE PROFILE TO CSV
+        # ------------------------------------------
+
+        profile_df = pd.DataFrame({
+            "Distance_km": dist_km,
+            "X_Coordinate": [p.x for p in pts],
+            "Y_Coordinate": [p.y for p in pts],
+            "Elevation_m": smooth_elev
+        })
+
+        profile_df.to_csv(
+            f"outputs/topographic_line_profile_{idx+1}.csv",
+            index=False
+        )
+
+        # ------------------------------------------
+        # PLOT LINE PROFILE
+        # ------------------------------------------
+
         plt.figure(figsize=(8,3))
         plt.plot(dist_km, smooth_elev, color="blue", linewidth=1.2,
                  label="River/Cross-section")
@@ -253,7 +274,28 @@ for idx, geom in enumerate(gdf.geometry):
         elev_mean_smooth = gaussian_filter1d(elev_mean, sigma=5)
         elev_max_smooth = gaussian_filter1d(elev_max, sigma=5)
 
-        # PLOT
+        # ------------------------------------------
+        # EXPORT SWATH PROFILE TO CSV
+        # ------------------------------------------
+
+        swath_df = pd.DataFrame({
+
+            "Distance_km": dist_km,
+            "X_Coordinate": [p.x for p in pts],
+            "Y_Coordinate": [p.y for p in pts],
+            "Minimum_Elevation_m":elev_min_smooth,
+            "Mean_Elevation_m":elev_mean_smooth,
+            "Maximum_Elevation_m":elev_max_smooth})
+
+        swath_df.to_csv(
+            f"outputs/topographic_swath_profile_{idx+1}.csv",
+            index=False
+        )
+
+        # ------------------------------------------
+        # PLOT SWATH PROFILE
+        # ------------------------------------------
+        
         plt.figure(figsize=(8,3))
 
         plt.fill_between(dist_km, elev_min_smooth, elev_max_smooth,
