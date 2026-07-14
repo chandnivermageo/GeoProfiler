@@ -50,7 +50,7 @@ Useful for analyzing:
 ✔ Batch processing support for multiple profiles  
 ✔ Reduced manual effort and processing time  
 ✔ Smoothing and interpolation for enhanced visualization  
-✔ Export-ready outputs in **PNG** and **vector PDF** formats  
+✔ Export-ready outputs in **PNG**, **CSV** and **vector PDF** formats  
 ✔ CRS compatibility checks between raster and vector datasets  
 ✔ Seamless integration with GIS workflows  
 
